@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import { setAnimals, loadingComplete, hasErrored } from '../../actions/index';
 import { connect } from 'react-redux';
+import AnimalsContainer from '../AnimalsContainer/AnimalsContainer'
 
 class App extends Component {
   
@@ -29,9 +30,12 @@ class App extends Component {
     )
     return (
       <div className="App">
-        <h1>Animal Rescue</h1>
-        {this.props.loading && loader}
-        {this.props.error !== '' && errorMessage}
+        <header>
+          <h1>Animal Rescue</h1>
+          {this.props.loading && loader}
+          {this.props.error !== '' && errorMessage}
+        </header>
+        <AnimalsContainer />
       </div>
     );
   }
