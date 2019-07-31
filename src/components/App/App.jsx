@@ -18,6 +18,18 @@ class App extends Component {
     .then(animals => this.props.setAnimals(animals))
     .then(() => this.props.loadingComplete())
     .catch(error => this.props.hasErrored(error.message))
+
+    fetch('http://localhost:3001/api/v1/donations')
+    .then(response => {
+      if(!response.ok) {
+        return error => this.props.hasError(error.message)
+      } else {
+        return response.json()
+      }
+    })
+    .then(donations => console.log(donations))
+    .then(() => this.props.loadingComplete())
+    .catch(error => this.props.hasErrored(error))
   }
   
   render() {
