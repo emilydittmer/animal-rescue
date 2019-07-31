@@ -4,7 +4,7 @@ export const setAnimals = animals => ({
 })
 
 export const isLoading = () => ({
-  type: 'IS_LOADING'
+  type: 'LOADING_COMPLETE'
 })
 
 export const hasErrored = message => ({
