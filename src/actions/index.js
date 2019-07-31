@@ -20,3 +20,8 @@ export const setDonations = donations => ({
   type: 'SET_DONATIONS',
   donations
 })
+
+export const addDonation = donation => ({
+  type: 'ADD_DONATION',
+  donation
+})
