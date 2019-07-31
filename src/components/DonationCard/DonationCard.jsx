@@ -7,7 +7,7 @@ class DonationCard extends Component {
     return(
       <article className='donation-card'>
         <h3>Name: {name}</h3>
-        <h3>Donation Amount: ${donation}</h3>
+        <h3>Donation: ${donation}</h3>
       </article>
     )
   }
