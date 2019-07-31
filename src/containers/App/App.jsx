@@ -4,7 +4,8 @@ import {
   setAnimals,
   loadingComplete,
   hasErrored,
-  setDonations
+  setDonations,
+  addDonation
 } from "../../actions/index";
 import { connect } from "react-redux";
 import AnimalsContainer from "../AnimalsContainer/AnimalsContainer";
@@ -36,7 +37,28 @@ class App extends Component {
       .then(donations => this.props.setDonations(donations))
       .then(() => this.props.loadingComplete())
       .catch(error => this.props.hasErrored(error));
+
   }
+
+  addNewDonation = (user) => {
+    return fetch("http://localhost:3001/api/v1/donations/", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          return error => this.props.hasErrored(error.message);
+        } else {
+          return response.json();
+        }
+      })
+      .then(donation => this.props.addDonation(donation))
+      .then(() => this.props.loadingComplete())
+      .catch(error => this.props.hasErrored(error.message));
+  };
 
   render() {
     const loader = <h2>Page is Loading</h2>;
@@ -48,7 +70,7 @@ class App extends Component {
           {this.props.loading && loader}
           {this.props.error !== "" && errorMessage}
         </header>
-        <DonationForm />
+        <DonationForm addNewDonation = {this.addNewDonation}/>
         <main className='display-section'>
           <AnimalsContainer />
           <Donations />
@@ -67,7 +89,8 @@ const mapDispatchToProps = dispatch => ({
   setAnimals: animals => dispatch(setAnimals(animals)),
   loadingComplete: () => dispatch(loadingComplete()),
   hasErrored: message => dispatch(hasErrored(message)),
-  setDonations: donations => dispatch(setDonations(donations))
+  setDonations: donations => dispatch(setDonations(donations)),
+  addDonation: donation => dispatch(addDonation(donation))
 });
 
 export default connect(
