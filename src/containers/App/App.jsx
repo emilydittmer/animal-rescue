@@ -3,7 +3,8 @@ import './App.scss';
 import { setAnimals, loadingComplete, hasErrored, setDonations } from '../../actions/index';
 import { connect } from 'react-redux';
 import AnimalsContainer from '../AnimalsContainer/AnimalsContainer';
-import Donations from '../Donations/Donations'
+import Donations from '../Donations/Donations';
+import DonationForm from '../DonationForm/DonationForm'
 
 class App extends Component {
   
@@ -48,6 +49,7 @@ class App extends Component {
           {this.props.loading && loader}
           {this.props.error !== '' && errorMessage}
         </header>
+        <DonationForm />
         <AnimalsContainer />
         <Donations />
       </div>
