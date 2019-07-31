@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AnimalsContainer.scss';
 import { connect } from 'react-redux';
-import AnimalCard from '../../containers/AnimalCard/AnimalCard'
+import AnimalCard from '../../components/AnimalCard/AnimalCard'
 
 class AnimalContainer extends Component {
   render(){
@@ -18,8 +18,8 @@ class AnimalContainer extends Component {
       )
     })
     return(
-      <section>
-        <h2>Animals</h2>
+      <section className='animal-section'>
+        <h2 className='animal-section-header'>Animals</h2>
         <div className='animal-container'>
           {allAnimals}
         </div>

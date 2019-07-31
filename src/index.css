@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    display: grid;
+    grid-template-rows: 20% auto;
+    grid-template-columns: 75% auto;
 }
 
 code {
