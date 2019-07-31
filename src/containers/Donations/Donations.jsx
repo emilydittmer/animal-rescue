@@ -8,6 +8,7 @@ class Donations extends Component {
     const { donations } = this.props;
     const eachDonation = donations.map(donation => {
       return (
+        
         <DonationCard 
           key={donation.id}
           name={donation.name}
@@ -17,6 +18,7 @@ class Donations extends Component {
     })
     return(
       <section className='donations'>
+        <h2>Donors</h2>
         {eachDonation}
       </section>
     )
