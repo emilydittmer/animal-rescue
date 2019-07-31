@@ -9,7 +9,7 @@ class AnimalContainer extends Component {
     const allAnimals = animals.map(animal => {
       return (
         <AnimalCard 
-          id={animal.id}
+          key={animal.id}
           name={animal.name}
           species={animal.species}
           description={animal.description}
@@ -20,7 +20,9 @@ class AnimalContainer extends Component {
     return(
       <section>
         <h2>Animals</h2>
-        {allAnimals}
+        <div className='animal-container'>
+          {allAnimals}
+        </div>
       </section>
     )
   }
