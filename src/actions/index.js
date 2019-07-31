@@ -3,7 +3,7 @@ export const setAnimals = animals => ({
   animals
 })
 
-export const isLoading = () => ({
+export const loadingComplete = () => ({
   type: 'LOADING_COMPLETE'
 })
 
