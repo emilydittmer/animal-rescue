@@ -24,10 +24,14 @@ class App extends Component {
     const loader = (
       <h2>Page is Loading</h2>
     )
+    const errorMessage = (
+      <h2>{this.props.error}</h2>
+    )
     return (
       <div className="App">
         <h1>Animal Rescue</h1>
         {this.props.loading && loader}
+        {this.props.error !== '' && errorMessage}
       </div>
     );
   }
