@@ -1,0 +1,14 @@
+.animal-section{
+  grid-row: 2/-1;
+  grid-column: 1/2;
+}
+
+.animal-section-header{
+  text-align: center;
+}
+
+.animal-container {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
