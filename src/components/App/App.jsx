@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { setAnimals, loadingComplete, hasErrored } from '../../actions/index';
+import { setAnimals, loadingComplete, hasErrored, setDonations } from '../../actions/index';
 import { connect } from 'react-redux';
 import AnimalsContainer from '../AnimalsContainer/AnimalsContainer'
 
@@ -27,7 +27,7 @@ class App extends Component {
         return response.json()
       }
     })
-    .then(donations => console.log(donations))
+    .then(donations => this.props.setDonations(donations))
     .then(() => this.props.loadingComplete())
     .catch(error => this.props.hasErrored(error))
   }
@@ -61,7 +61,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setAnimals: animals => dispatch(setAnimals(animals)),
   loadingComplete: () => dispatch(loadingComplete()),
-  hasErrored: message => dispatch(hasErrored(message))
+  hasErrored: message => dispatch(hasErrored(message)),
+  setDonations: donations => dispatch(setDonations(donations))
 })
 
 export default connect (mapStateToProps, mapDispatchToProps)(App);
